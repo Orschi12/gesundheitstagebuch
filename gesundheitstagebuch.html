@@ -219,6 +219,9 @@
         setSaved(true); setTimeout(() => setSaved(false), 2000);
       }
 
+      const [showBackup, setShowBackup] = useState(false);
+      const [backupMsg, setBackupMsg] = useState("");
+
       const kV = entries.filter(e => e.krank != null);
       const sV = entries.filter(e => e.schlaf != null);
       const swV = entries.filter(e => e.schwindel != null);
@@ -238,12 +241,68 @@
               <div style={{ fontSize: 22, fontWeight: "bold" }}>Gesundheitstagebuch</div>
               <div style={{ marginTop: 12, display: "flex", gap: 10 }}>
                 {["eintrag", "tabelle"].map(v => (
-                  <button key={v} onClick={() => setView(v)} style={{ padding: "6px 16px", borderRadius: 4, border: "1px solid", borderColor: view === v ? "#c9a96e" : "#555", background: view === v ? "#c9a96e" : "transparent", color: view === v ? "#2c2825" : "#faf8f5", fontSize: 12, cursor: "pointer", fontWeight: view === v ? "bold" : "normal" }}>
+                  <button key={v} type="button" onClick={() => { setView(v); setShowBackup(false); }} style={{ padding: "6px 16px", borderRadius: 4, border: "1px solid", borderColor: view === v && !showBackup ? "#c9a96e" : "#555", background: view === v && !showBackup ? "#c9a96e" : "transparent", color: view === v && !showBackup ? "#2c2825" : "#faf8f5", fontSize: 12, cursor: "pointer", fontWeight: view === v && !showBackup ? "bold" : "normal" }}>
                     {v === "eintrag" ? "Tageseintrag" : "Übersicht"}
                   </button>
                 ))}
+                <button type="button" onClick={() => setShowBackup(!showBackup)} style={{ padding: "6px 14px", borderRadius: 4, border: "1px solid", borderColor: showBackup ? "#c9a96e" : "#555", background: showBackup ? "#c9a96e" : "transparent", color: showBackup ? "#2c2825" : "#faf8f5", fontSize: 12, cursor: "pointer", fontWeight: showBackup ? "bold" : "normal" }}>
+                  💾 Backup
+                </button>
               </div>
             </div>
+
+            {/* Backup Panel */}
+            {showBackup && (
+              <div style={{ background: "#faf8f5", borderBottom: "1px solid #e8e4de", padding: "14px 20px" }}>
+                <div style={{ fontSize: 11, color: "#c9a96e", letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Datensicherung</div>
+
+                {/* Export */}
+                <button type="button" onClick={() => {
+                  const now = new Date();
+                  const pad = n => String(n).padStart(2, "0");
+                  const filename = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}.json`;
+                  const blob = new Blob([JSON.stringify(entries, null, 2)], { type: "application/json" });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url; a.download = filename; a.click();
+                  URL.revokeObjectURL(url);
+                  setBackupMsg("✓ Datei wird gespeichert...");
+                  setTimeout(() => setBackupMsg(""), 3000);
+                }} style={{ width: "100%", padding: "10px", background: "#2c2825", color: "#faf8f5", border: "none", borderRadius: 6, fontSize: 13, fontWeight: "bold", cursor: "pointer", marginBottom: 10 }}>
+                  📥 Exportieren — Als Datei speichern
+                </button>
+
+                {/* Import */}
+                <label style={{ display: "block", width: "100%", padding: "10px", background: "#f0ece6", color: "#2c2825", border: "1px solid #ddd", borderRadius: 6, fontSize: 13, fontWeight: "bold", cursor: "pointer", textAlign: "center", marginBottom: backupMsg ? 8 : 0 }}>
+                  📂 Importieren — Datei auswählen
+                  <input type="file" accept=".json" style={{ display: "none" }} onChange={e => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                      try {
+                        const imported = JSON.parse(ev.target.result);
+                        if (!Array.isArray(imported)) throw new Error();
+                        const merged = { ...Object.fromEntries(imported.map(e => [e.date, e])) };
+                        entries.forEach(e => { merged[e.date] = e; });
+                        const updated = Object.values(merged).sort((a,b) => a.date < b.date ? -1 : 1);
+                        setEntries(updated);
+                        persist(updated);
+                        setBackupMsg("✓ " + imported.length + " Einträge importiert und zusammengeführt!");
+                        setTimeout(() => setBackupMsg(""), 4000);
+                      } catch {
+                        setBackupMsg("Fehler: Ungültige Datei");
+                        setTimeout(() => setBackupMsg(""), 3000);
+                      }
+                    };
+                    reader.readAsText(file);
+                    e.target.value = "";
+                  }} />
+                </label>
+
+                {backupMsg && <div style={{ fontSize: 12, color: backupMsg.startsWith("✓") ? "#4ade80" : "#f87171", textAlign: "center", fontWeight: "bold", marginTop: 8 }}>{backupMsg}</div>}
+              </div>
+            )}
 
             {/* Durchschnitte */}
             <div style={{ display: "flex", gap: 10, padding: "12px 20px 10px", background: "#faf8f5" }}>
