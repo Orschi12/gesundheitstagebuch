@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesundheitstagebuch</title>
+  <link rel="apple-touch-icon" href="data:image/jpeg;base64,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">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; }
+    body { font-family: Georgia, serif; background: #faf8f5; color: #2c2825; }
+    input, textarea, button { font-family: Georgia, serif; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+    const STORAGE_KEY = "gesundheitstagebuch-v3";
+
+    function todayISO() { return new Date().toISOString().split("T")[0]; }
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+    }
+    function krankColor(v) {
+      if (v == null) return "#ccc";
+      if (v <= 3) return "#4ade80"; if (v <= 6) return "#fb923c"; return "#f87171";
+    }
+    function schlafColor(v) {
+      if (v == null) return "#ccc";
+      if (v >= 8) return "#4ade80"; if (v >= 5) return "#facc15"; return "#f87171";
+    }
+    function schwindelColor(v) {
+      if (v == null) return "#ccc";
+      if (v <= 2) return "#4ade80"; if (v <= 5) return "#facc15"; if (v <= 7) return "#fb923c"; return "#f87171";
+    }
+    function persist(entries) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); } catch(e) {}
+    }
+
+    const BASE_ENTRIES = [
+      { date: "2026-05-12", krank: 6, schlaf: null, schwindel: 6, notiz: "" },
+      { date: "2026-05-13", krank: 8, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-14", krank: 8, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-15", krank: 8, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-16", krank: 7, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-17", krank: 7, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-18", krank: 8, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-19", krank: 6, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-20", krank: 6, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-21", krank: 6, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-22", krank: 5, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-23", krank: 6, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-24", krank: 6, schlaf: null, schwindel: 7, notiz: "" },
+      { date: "2026-05-25", krank: 4, schlaf: null, schwindel: 8, notiz: "" },
+      { date: "2026-05-26", krank: 2, schlaf: null, schwindel: 2, notiz: "" },
+      { date: "2026-05-27", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-05-28", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-05-29", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-05-30", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-05-31", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-06-01", krank: 1, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-06-02", krank: 4, schlaf: null, schwindel: 1, notiz: "" },
+      { date: "2026-06-03", krank: 5, schlaf: null, schwindel: 8, notiz: "" },
+    ];
+
+    function ScaleInput({ label, sublabel, value, onChange, colorFn }) {
+      const isNull = value == null;
+      return (
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+            <div>
+              <span style={{ fontSize: 13, fontWeight: "bold", color: "#2c2825" }}>{label}</span>
+              <span style={{ fontSize: 11, color: "#aaa", marginLeft: 6 }}>{sublabel}</span>
+            </div>
+            <span style={{ fontSize: isNull ? 12 : 22, fontWeight: "bold", color: isNull ? "#bbb" : colorFn(value), minWidth: 28, textAlign: "right" }}>
+              {isNull ? "–" : value}
+            </span>
+          </div>
+          <div style={{ display: "flex", gap: 4 }}>
+            <button type="button" onClick={() => onChange(null)} style={{ padding: "0 8px", height: 36, border: `2px solid ${isNull ? "#aaa" : "#e8e4de"}`, borderRadius: 4, background: isNull ? "#f0ece6" : "#fff", cursor: "pointer", fontSize: 10, color: isNull ? "#555" : "#ccc", fontWeight: isNull ? "bold" : "normal", whiteSpace: "nowrap" }}>k.A.</button>
+            {[1,2,3,4,5,6,7,8,9,10].map(n => (
+              <button key={n} onClick={() => onChange(n)} style={{ flex: 1, height: 36, border: "none", borderRadius: 4, background: !isNull && n <= value ? colorFn(value) : "#e8e4de", cursor: "pointer", fontSize: 11, color: !isNull && n <= value ? "#fff" : "#bbb", fontWeight: n === value ? "bold" : "normal", opacity: !isNull && n <= value ? 1 : 0.6 }}>{n}</button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function ScaleButtons({ value, onChange, colorFn }) {
+      const isNull = value == null;
+      return (
+        <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+          <button type="button" onClick={() => onChange(null)} style={{ padding: "4px 7px", border: `2px solid ${isNull ? "#aaa" : "#ddd"}`, borderRadius: 4, background: isNull ? "#f0ece6" : "#fff", cursor: "pointer", fontSize: 10, color: isNull ? "#555" : "#bbb", fontWeight: isNull ? "bold" : "normal" }}>k.A.</button>
+          {[1,2,3,4,5,6,7,8,9,10].map(n => (
+            <button key={n} onClick={() => onChange(n)} style={{ width: 26, height: 26, border: "none", borderRadius: 3, background: !isNull && n <= value ? colorFn(value) : "#e8e4de", cursor: "pointer", fontSize: 10, color: !isNull && n <= value ? "#fff" : "#aaa", fontWeight: n === value ? "bold" : "normal" }}>{n}</button>
+          ))}
+        </div>
+      );
+    }
+
+    function MiniBar({ value, colorFn }) {
+      if (value == null) return <span style={{ fontSize: 11, color: "#ccc", fontStyle: "italic" }}>k.A.</span>;
+      return (
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <div style={{ flex: 1, height: 8, background: "#f0ece6", borderRadius: 4, overflow: "hidden" }}>
+            <div style={{ width: `${value * 10}%`, height: "100%", background: colorFn(value), borderRadius: 4 }} />
+          </div>
+          <span style={{ fontSize: 12, fontWeight: "bold", color: colorFn(value), minWidth: 14, textAlign: "right" }}>{value}</span>
+        </div>
+      );
+    }
+
+    function TabelleRows({ entries, setEntries, scrollRef }) {
+      const [editDate, setEditDate] = useState(null);
+      const [editForm, setEditForm] = useState({});
+      const [confirmDelete, setConfirmDelete] = useState(null);
+      const sorted = [...entries].sort((a, b) => a.date > b.date ? -1 : 1);
+
+      function update(updated) { setEntries(updated); persist(updated); }
+      function startEdit(e) { setEditDate(e.date); setEditForm({...e}); setConfirmDelete(null); }
+      function saveEdit() { update(entries.map(e => e.date === editDate ? {...editForm} : e)); setEditDate(null); }
+      function clearEntry(date) {
+        update(entries.map(e => e.date === date ? { date, krank: null, schlaf: null, schwindel: null, notiz: "" } : e));
+        setConfirmDelete(null); setEditDate(null);
+      }
+
+      return (
+        <tbody>
+          {sorted.map((e, i) => {
+            const isEditing = editDate === e.date;
+            const isToday = e.date === todayISO();
+            const allNull = e.krank == null && e.schlaf == null && e.schwindel == null && !e.notiz;
+
+            if (isEditing) return (
+              <tr key={e.date} style={{ background: "#fffbf0", borderBottom: "1px solid #f0ece6" }}>
+                <td style={{ padding: "10px 10px", color: "#c9a96e", fontWeight: "bold", fontSize: 12, whiteSpace: "nowrap", verticalAlign: "top" }}>{formatDate(e.date)}</td>
+                <td colSpan={4} style={{ padding: "12px 10px" }}>
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{ fontSize: 10, color: "#aaa", marginBottom: 4, letterSpacing: 1 }}>KRANKHEITSGEFÜHL</div>
+                    <ScaleButtons value={editForm.krank} onChange={v => setEditForm({...editForm, krank: v})} colorFn={krankColor} />
+                  </div>
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{ fontSize: 10, color: "#aaa", marginBottom: 4, letterSpacing: 1 }}>SCHLAFQUALITÄT</div>
+                    <ScaleButtons value={editForm.schlaf} onChange={v => setEditForm({...editForm, schlaf: v})} colorFn={schlafColor} />
+                  </div>
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{ fontSize: 10, color: "#aaa", marginBottom: 4, letterSpacing: 1 }}>SCHWINDEL</div>
+                    <ScaleButtons value={editForm.schwindel} onChange={v => setEditForm({...editForm, schwindel: v})} colorFn={schwindelColor} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, color: "#aaa", marginBottom: 4, letterSpacing: 1 }}>NOTIZ</div>
+                    <textarea value={editForm.notiz} onChange={ev => setEditForm({...editForm, notiz: ev.target.value})} rows={2}
+                      style={{ width: "100%", padding: "6px 8px", border: "1px solid #ddd", borderRadius: 4, fontSize: 12, resize: "vertical" }} />
+                  </div>
+                </td>
+                <td style={{ padding: "10px 8px", verticalAlign: "top" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <button type="button" onClick={saveEdit} style={{ padding: "8px 10px", background: "#2c2825", color: "#faf8f5", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 12, fontWeight: "bold", whiteSpace: "nowrap" }}>✓ OK</button>
+                    <button type="button" onClick={() => setEditDate(null)} style={{ padding: "8px 10px", background: "#f0ece6", color: "#555", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 12, whiteSpace: "nowrap" }}>✕ Abbr.</button>
+                  </div>
+                </td>
+              </tr>
+            );
+
+            return (
+              <tr key={e.date} style={{ background: i % 2 === 0 ? "#faf8f5" : "#fff", borderBottom: "1px solid #f0ece6" }}>
+                <td style={{ padding: "8px 8px", color: isToday ? "#c9a96e" : "#555", fontWeight: isToday ? "bold" : "normal", fontSize: 11, whiteSpace: "nowrap", verticalAlign: "middle", position: "sticky", left: 0, background: i % 2 === 0 ? "#faf8f5" : "#fff", zIndex: 2 }}>
+                  {formatDate(e.date)}
+                  {isToday && <div style={{ fontSize: 9, color: "#c9a96e", letterSpacing: 1 }}>HEUTE</div>}
+                </td>
+                <td style={{ padding: "6px", verticalAlign: "middle" }}><MiniBar value={e.krank} colorFn={krankColor} /></td>
+                <td style={{ padding: "6px", verticalAlign: "middle" }}><MiniBar value={e.schlaf} colorFn={schlafColor} /></td>
+                <td style={{ padding: "6px", verticalAlign: "middle" }}><MiniBar value={e.schwindel} colorFn={schwindelColor} /></td>
+                <td style={{ padding: "6px 8px", color: "#888", fontSize: 10, fontStyle: e.notiz ? "normal" : "italic", verticalAlign: "middle" }}>{e.notiz || "–"}</td>
+                <td style={{ padding: "6px", textAlign: "center", verticalAlign: "middle", whiteSpace: "nowrap" }}>
+                  <button type="button" onClick={() => startEdit(e)} style={{ padding: "4px 7px", background: "#f0ece6", color: "#555", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 13, marginRight: 3 }}>✎</button>
+                  {confirmDelete === e.date ? (
+                    <>
+                      <button type="button" onClick={() => clearEntry(e.date)} style={{ padding: "4px 6px", background: "#f87171", color: "#fff", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 10, marginRight: 2 }}>Ja</button>
+                      <button type="button" onClick={() => setConfirmDelete(null)} style={{ padding: "4px 6px", background: "#e8e4de", color: "#555", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 10 }}>Nein</button>
+                    </>
+                  ) : (
+                    <button type="button" onClick={() => { if (!allNull) setConfirmDelete(e.date); }} style={{ padding: "4px 7px", background: allNull ? "#f5f5f5" : "#fff0ee", color: allNull ? "#ccc" : "#f87171", border: "none", borderRadius: 4, cursor: allNull ? "default" : "pointer", fontSize: 13 }}>🗑</button>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      );
+    }
+
+    function App() {
+      const [entries, setEntries] = useState([]);
+      const [view, setView] = useState("eintrag");
+      const [form, setForm] = useState({ date: todayISO(), krank: null, schlaf: null, schwindel: null, notiz: "" });
+      const [saved, setSaved] = useState(false);
+
+      useEffect(() => {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) { setEntries(JSON.parse(raw)); }
+          else { setEntries(BASE_ENTRIES); persist(BASE_ENTRIES); }
+        } catch(e) { setEntries(BASE_ENTRIES); }
+      }, []);
+
+      useEffect(() => {
+        const existing = entries.find(e => e.date === form.date);
+        if (existing) { setForm(existing); }
+        else { setForm(f => ({ date: f.date, krank: null, schlaf: null, schwindel: null, notiz: "" })); }
+      }, [form.date, entries]);
+
+      function saveEntry() {
+        const updated = [...entries.filter(e => e.date !== form.date), {...form}].sort((a,b) => a.date < b.date ? -1 : 1);
+        setEntries(updated); persist(updated);
+        setSaved(true); setTimeout(() => setSaved(false), 2000);
+      }
+
+      const [showBackup, setShowBackup] = useState(false);
+      const [backupMsg, setBackupMsg] = useState("");
+
+      const kV = entries.filter(e => e.krank != null);
+      const sV = entries.filter(e => e.schlaf != null);
+      const swV = entries.filter(e => e.schwindel != null);
+      const avgKrank = kV.length ? (kV.reduce((s,e) => s+e.krank,0)/kV.length).toFixed(1) : "–";
+      const avgSchlaf = sV.length ? (sV.reduce((s,e) => s+e.schlaf,0)/sV.length).toFixed(1) : "–";
+      const avgSchwindel = swV.length ? (swV.reduce((s,e) => s+e.schwindel,0)/swV.length).toFixed(1) : "–";
+
+      return (
+        <div style={{ height: "100dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+
+          {/* ── FESTER BEREICH ── */}
+          <div style={{ flexShrink: 0 }}>
+
+            {/* Titel + Buttons */}
+            <div style={{ background: "#2c2825", color: "#faf8f5", padding: "16px 20px 14px", borderBottom: "3px solid #c9a96e" }}>
+              <div style={{ fontSize: 10, letterSpacing: 3, color: "#c9a96e", marginBottom: 3, textTransform: "uppercase" }}>Persönliches Journal</div>
+              <div style={{ fontSize: 22, fontWeight: "bold" }}>Gesundheitstagebuch</div>
+              <div style={{ marginTop: 12, display: "flex", gap: 10 }}>
+                {["eintrag", "tabelle"].map(v => (
+                  <button key={v} type="button" onClick={() => { setView(v); setShowBackup(false); }} style={{ padding: "6px 16px", borderRadius: 4, border: "1px solid", borderColor: view === v && !showBackup ? "#c9a96e" : "#555", background: view === v && !showBackup ? "#c9a96e" : "transparent", color: view === v && !showBackup ? "#2c2825" : "#faf8f5", fontSize: 12, cursor: "pointer", fontWeight: view === v && !showBackup ? "bold" : "normal" }}>
+                    {v === "eintrag" ? "Tageseintrag" : "Übersicht"}
+                  </button>
+                ))}
+                <button type="button" onClick={() => setShowBackup(!showBackup)} style={{ padding: "6px 14px", borderRadius: 4, border: "1px solid", borderColor: showBackup ? "#c9a96e" : "#555", background: showBackup ? "#c9a96e" : "transparent", color: showBackup ? "#2c2825" : "#faf8f5", fontSize: 12, cursor: "pointer", fontWeight: showBackup ? "bold" : "normal" }}>
+                  💾 Backup
+                </button>
+              </div>
+            </div>
+
+            {/* Backup Panel */}
+            {showBackup && (
+              <div style={{ background: "#faf8f5", borderBottom: "1px solid #e8e4de", padding: "14px 20px" }}>
+                <div style={{ fontSize: 11, color: "#c9a96e", letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Datensicherung</div>
+
+                {/* Export */}
+                <button type="button" onClick={() => {
+                  const now = new Date();
+                  const pad = n => String(n).padStart(2, "0");
+                  const filename = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}.json`;
+                  const blob = new Blob([JSON.stringify(entries, null, 2)], { type: "application/json" });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url; a.download = filename; a.click();
+                  URL.revokeObjectURL(url);
+                  setBackupMsg("✓ Datei wird gespeichert...");
+                  setTimeout(() => setBackupMsg(""), 3000);
+                }} style={{ width: "100%", padding: "10px", background: "#2c2825", color: "#faf8f5", border: "none", borderRadius: 6, fontSize: 13, fontWeight: "bold", cursor: "pointer", marginBottom: 10 }}>
+                  📥 Exportieren — Als Datei speichern
+                </button>
+
+                {/* Import */}
+                <label style={{ display: "block", width: "100%", padding: "10px", background: "#f0ece6", color: "#2c2825", border: "1px solid #ddd", borderRadius: 6, fontSize: 13, fontWeight: "bold", cursor: "pointer", textAlign: "center", marginBottom: backupMsg ? 8 : 0 }}>
+                  📂 Importieren — Datei auswählen
+                  <input type="file" accept=".json" style={{ display: "none" }} onChange={e => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                      try {
+                        const imported = JSON.parse(ev.target.result);
+                        if (!Array.isArray(imported)) throw new Error();
+                        const merged = { ...Object.fromEntries(imported.map(e => [e.date, e])) };
+                        entries.forEach(e => { merged[e.date] = e; });
+                        const updated = Object.values(merged).sort((a,b) => a.date < b.date ? -1 : 1);
+                        setEntries(updated);
+                        persist(updated);
+                        setBackupMsg("✓ " + imported.length + " Einträge importiert und zusammengeführt!");
+                        setTimeout(() => setBackupMsg(""), 4000);
+                      } catch {
+                        setBackupMsg("Fehler: Ungültige Datei");
+                        setTimeout(() => setBackupMsg(""), 3000);
+                      }
+                    };
+                    reader.readAsText(file);
+                    e.target.value = "";
+                  }} />
+                </label>
+
+                {backupMsg && <div style={{ fontSize: 12, color: backupMsg.startsWith("✓") ? "#4ade80" : "#f87171", textAlign: "center", fontWeight: "bold", marginTop: 8 }}>{backupMsg}</div>}
+              </div>
+            )}
+
+            {/* Durchschnitte */}
+            <div style={{ display: "flex", gap: 10, padding: "12px 20px 10px", background: "#faf8f5" }}>
+              {[
+                { label: "Ø Krankheitsgefühl", value: avgKrank, color: krankColor(parseFloat(avgKrank)) },
+                { label: "Ø Schlafqualität", value: avgSchlaf, color: schlafColor(parseFloat(avgSchlaf)) },
+                { label: "Ø Schwindel", value: avgSchwindel, color: schwindelColor(parseFloat(avgSchwindel)) },
+              ].map(s => (
+                <div key={s.label} style={{ flex: 1, background: "#fff", border: "1px solid #e8e4de", borderTop: `3px solid ${s.color}`, borderRadius: 6, padding: "8px 10px", textAlign: "center" }}>
+                  <div style={{ fontSize: 20, fontWeight: "bold", color: s.color }}>{s.value}</div>
+                  <div style={{ fontSize: 9, color: "#aaa", marginTop: 2, lineHeight: 1.3 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Verlauf (nur Übersicht) */}
+            {view === "tabelle" && (
+              <div style={{ background: "#fff", border: "1px solid #e8e4de", borderRadius: 8, margin: "0 20px 10px", padding: "10px 14px" }}>
+                <div style={{ fontSize: 10, color: "#aaa", letterSpacing: 1, marginBottom: 8 }}>VERLAUF — alle {entries.length} Tage</div>
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+                  <div style={{ display: "flex", alignItems: "flex-end", gap: 3, minWidth: entries.length * 14, paddingTop: 28 }}>
+                    {[...entries].sort((a,b) => a.date < b.date ? -1 : 1).map(e => {
+                      const d = new Date(e.date);
+                      const isMonday = d.getDay() === 1;
+                      const label = d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+                      return (
+                        <div key={e.date} style={{ flex: "0 0 10px", position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                          {isMonday && (
+                            <>
+                              <span style={{ position: "absolute", top: -26, fontSize: 8, color: "#aaa", whiteSpace: "nowrap", transform: "translateX(-50%)", left: "50%" }}>{label}</span>
+                              <div style={{ position: "absolute", top: -10, width: 1, height: 8, background: "#bbb" }} />
+                            </>
+                          )}
+                          <div style={{ background: e.schwindel != null ? schwindelColor(e.schwindel) : "#e8e4de", height: e.schwindel != null ? e.schwindel * 2 : 4, borderRadius: "2px 2px 0 0", opacity: 0.85, width: 10 }} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tabellenkopf entfernt - jetzt in der Tabelle selbst sticky */}
+          </div>
+
+          {/* ── SCROLLBARER BEREICH ── */}
+          <div style={{ flex: 1, overflow: "hidden", padding: view === "tabelle" ? "0 20px 0" : "0 20px 40px" }}>
+
+            {view === "eintrag" && (
+              <div style={{ overflowY: "auto", WebkitOverflowScrolling: "touch", height: "100%", paddingBottom: 40 }}>
+              <div style={{ background: "#fff", border: "1px solid #e8e4de", borderRadius: 8, padding: 20, marginTop: 10 }}>
+                <div style={{ fontSize: 11, letterSpacing: 2, color: "#c9a96e", marginBottom: 18, textTransform: "uppercase" }}>Neuer Eintrag</div>
+                <label style={{ fontSize: 11, color: "#aaa", display: "block", marginBottom: 4, letterSpacing: 0.5 }}>DATUM</label>
+                <div style={{ display: "flex", alignItems: "center", border: "1px solid #ddd", borderRadius: 4, background: "#faf8f5", marginBottom: 20, overflow: "hidden" }}>
+                  <button type="button" onClick={() => {
+                    const d = new Date(form.date); d.setDate(d.getDate() - 1);
+                    setForm({...form, date: d.toISOString().split("T")[0]});
+                  }} style={{ padding: "12px 28px", background: "#f0ece6", border: "none", borderRight: "1px solid #ddd", cursor: "pointer", fontSize: 18, color: "#555" }}>‹</button>
+                  <button type="button" onClick={() => setForm({...form, date: todayISO()})} style={{ flex: 1, textAlign: "center", fontSize: 15, color: "#2c2825", fontWeight: "normal", background: "transparent", border: "none", cursor: form.date === todayISO() ? "default" : "pointer", padding: "12px 0", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                    <span>{formatDate(form.date)}</span>
+                    {form.date !== todayISO() && (
+                      <span style={{ background: "rgba(201,169,110,0.2)", border: "1px solid #c9a96e", borderRadius: 6, fontSize: 11, color: "#c9a96e", padding: "3px 10px", letterSpacing: 2, fontWeight: "bold", whiteSpace: "nowrap" }}>HEUTE</span>
+                    )}
+                  </button>
+                  <button type="button" onClick={() => {
+                    const d = new Date(form.date); d.setDate(d.getDate() + 1);
+                    setForm({...form, date: d.toISOString().split("T")[0]});
+                  }} style={{ padding: "12px 28px", background: "#f0ece6", border: "none", borderLeft: "1px solid #ddd", cursor: "pointer", fontSize: 18, color: "#555" }}>›</button>
+                </div>
+                <ScaleInput label="Krankheitsgefühl" sublabel="1 = kerngesund · 10 = sehr krank" value={form.krank} onChange={v => setForm({...form, krank: v})} colorFn={krankColor} />
+                <ScaleInput label="Schlafqualität" sublabel="1 = schlecht · 10 = sehr gut" value={form.schlaf} onChange={v => setForm({...form, schlaf: v})} colorFn={schlafColor} />
+                <ScaleInput label="Schwindel" sublabel="1 = kein Schwindel · 10 = sehr stark" value={form.schwindel} onChange={v => setForm({...form, schwindel: v})} colorFn={schwindelColor} />
+                <label style={{ fontSize: 11, color: "#aaa", display: "block", marginBottom: 4, letterSpacing: 0.5 }}>NOTIZ</label>
+                <textarea value={form.notiz} onChange={e => setForm({...form, notiz: e.target.value})}
+                  placeholder="Besonderheiten, Begleitsymptome, Medikamente..." rows={3}
+                  style={{ width: "100%", padding: "9px 12px", border: "1px solid #ddd", borderRadius: 4, fontSize: 13, resize: "vertical", background: "#faf8f5", lineHeight: 1.6, marginBottom: 16 }} />
+                <button type="button" onClick={saveEntry} style={{ width: "100%", padding: 13, background: saved ? "#4ade80" : "#2c2825", color: saved ? "#2c2825" : "#faf8f5", border: "none", borderRadius: 6, fontSize: 14, fontWeight: "bold", cursor: "pointer" }}>
+                  {saved ? "✓ Gespeichert" : "Eintrag speichern"}
+                </button>
+              </div>
+              </div>
+            )}
+
+            {view === "tabelle" && (
+              <div style={{ overflowX: "auto", overflowY: "auto", WebkitOverflowScrolling: "touch", height: "100%" }}>
+                <table style={{ width: "100%", minWidth: 520, borderCollapse: "collapse", fontSize: 11, tableLayout: "fixed" }}>
+                  <colgroup>
+                    <col style={{ width: "22%" }} />
+                    <col style={{ width: "14%" }} />
+                    <col style={{ width: "14%" }} />
+                    <col style={{ width: "15%" }} />
+                    <col style={{ width: "20%" }} />
+                    <col style={{ width: "15%" }} />
+                  </colgroup>
+                  <thead style={{ position: "sticky", top: 0, zIndex: 4 }}>
+                    <tr style={{ background: "#2c2825", color: "#faf8f5" }}>
+                      <th style={{ padding: "9px 8px", textAlign: "left", fontWeight: "normal", fontSize: 10, letterSpacing: 1, position: "sticky", left: 0, background: "#2c2825", zIndex: 5 }}>DATUM</th>
+                      <th style={{ padding: "9px 6px", textAlign: "left", fontWeight: "normal", fontSize: 10, letterSpacing: 1, background: "#2c2825" }}>KRANK</th>
+                      <th style={{ padding: "9px 6px", textAlign: "left", fontWeight: "normal", fontSize: 10, letterSpacing: 1, background: "#2c2825" }}>SCHLAF</th>
+                      <th style={{ padding: "9px 6px", textAlign: "left", fontWeight: "normal", fontSize: 10, letterSpacing: 1, background: "#2c2825" }}>SCHWIND.</th>
+                      <th style={{ padding: "9px 6px", textAlign: "left", fontWeight: "normal", fontSize: 10, letterSpacing: 1, background: "#2c2825" }}>NOTIZ</th>
+                      <th style={{ padding: "9px 6px", textAlign: "center", fontWeight: "normal", fontSize: 10, letterSpacing: 1, background: "#2c2825" }}>AKTION</th>
+                    </tr>
+                  </thead>
+                  <TabelleRows entries={entries} setEntries={setEntries} />
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>
